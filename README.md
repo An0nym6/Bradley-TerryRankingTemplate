@@ -8,3 +8,8 @@ A Template based on MongoDb and Bradley-Terry Ranking which could be used in var
     再两两之间比赛100场，输赢概率根据客观实力值来定，然后我们就得到了模拟的比赛信息。
     将这个比赛信息作为输入输入到MM算法中，不断迭代得到每个球员被估计的实力。
     再比较估计的实力与客观的实力的比值，发现它稳定在一个常数，就说明算法的评估是很准确的。
+
+## 5月30日
+    开始书写基于mongodb的模板。
+    启动程序方法为进入template文件夹，命令行中输入“mongod -dbpath data/”，
+    然后再建立新的该路径命令行窗口，输入“node index.js”启动服务器即可。
