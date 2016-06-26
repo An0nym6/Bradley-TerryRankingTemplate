@@ -73,31 +73,25 @@ MongoClient.connect(url, function(err, db) {
       matches = [];
       players = {};
       listMatches(db, function() {
-        // console.log(matches, players);
-        new Promise(function(resolve) {
-          var loopCount = 10;
-          var buffer = [];
-          while (loopCount--) {
-            for (var player in players) {
-              var bijSum = 0, bijPlusBjiSum = 0;
-              for (var player_ in players) {
-                if (player != player_) {
-                  bijSum += matches[player][player_];
-                  bijPlusBjiSum += (matches[player][player_] + matches[player_][player]) /
-                                   (players[player] + players[player_]);
-                }
+        var loopCount = 10;
+        var buffer = [];
+        while (loopCount--) {
+          for (var player in players) {
+            var bijSum = 0, bijPlusBjiSum = 0;
+            for (var player_ in players) {
+              if (player != player_) {
+                bijSum += matches[player][player_];
+                bijPlusBjiSum += (matches[player][player_] + matches[player_][player]) /
+                                 (players[player] + players[player_]);
               }
-              buffer[player] = bijSum / bijPlusBjiSum;
             }
-            for (player in players)
-              players[player] = buffer[player];
+            buffer[player] = bijSum / bijPlusBjiSum;
           }
-          console.log(players);
-          resolve(players);
-        }).then(function(val) {
-          console.log(val);
-          res.json(val);
-        });
+          for (player in players)
+            players[player] = buffer[player];
+        }
+        res.setHeader("Access-Control-Allow-Origin", "*");
+        res.json(players);
       });
     });
 

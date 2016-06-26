@@ -1,0 +1,30 @@
+#rankingTable {
+    width: 80%;
+    margin: 56px auto;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: rgb(213, 213, 213);
+}
+
+#rankingTable thead, #rankingTable tr {
+    border-top-width: 1px;
+    border-top-style: solid;
+    border-top-color: rgb(213, 213, 213);
+}
+
+#rankingTable td, #rankingTable th {
+    text-align: center;
+    padding: 12px 12px;
+}
+
+#rankingTable th {
+    padding: 16px 12px;
+}
+
+#rankingTable tr:nth-child(even) {
+    background: rgba(242, 242, 242, 0.6);
+}
+
+#rankingTable tr:nth-child(odd) {
+    background: rgba(230, 230, 230, 0.6);
+}
